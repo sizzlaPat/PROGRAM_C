@@ -37,26 +37,26 @@ void afficherResultatSwitch(int nombre,int pair, int premier){
     switch (pair)
 
     {
-    case 1:
+        case 1:
+            if (premier==1){
+            printf("%d  est un nombre pair et premier",nombre);   
+            }
+            else{
+                printf("%d  est un nombre pair ", nombre); 
+            }
+        break;
+        case 0:
         if (premier==1){
-         printf("%d  est un nombre pair et premier",nombre);   
+        printf("%d  est un nombre premier ", nombre);
+            }
+            else{
+                printf("%d  n'est ni pair ni premier ", nombre);
+            }
+        break;
+        default:
+            printf("Erreur de saisie");
+        break;
         }
-        else{
-            printf("%d  est un nombre pair ", nombre); 
-        }
-    break;
-    case 0:
-       if (premier==1){
-       printf("%d  est un nombre premier ", nombre);
-        }
-        else{
-             printf("%d  n'est ni pair ni premier ", nombre);
-        }
-    break;
-    default:
-        printf("Erreur de saisie");
-    break;
-    }
    
 }
 
