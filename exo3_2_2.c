@@ -26,13 +26,30 @@ vers une nouvelle chaîne qui est une copie de l'entrée. Utilisez malloc pour a
 
 */
 
-char *mon_strdup(char *chaine){
-    int longueur_chaine= mon_strlen(chaine);
-    char *ptr = malloc(sizeof(char)*longueur_chaine);
-    mon_strcpy(chaine,ptr);
+/*
+Fonction strcat personnalisée
+Écrivez une fonction mon_strcat qui prend deux chaînes (destination et source) et ajoute la source à la fin de la destination.
 
 
-    return ptr;
+*/
+/*
+
+Recherche d'un caractère
+Écrivez une fonction qui prend une chaîne et un caractère en entrée, et renvoie un pointeur vers la première occurrence de ce caractère dans la chaîne (ou NULL si le caractère n'est pas trouvé).
+
+*/
+void mon_strcat(char *source, char *destination){
+
+        int longueur_source = mon_strlen(source);
+        int longueur_destination = mon_strlen(destination);
+        for (int i = longueur_source ; destination[i] != '\0'; i++)
+        {
+           destination[i]= source[i-longueur_source];
+        }
+        
+       destination[longueur_destination+longueur_source]='\0';
+
+
 }
 
 //     Fonction strlen personnalisée
@@ -43,6 +60,8 @@ int mon_strlen(char *tab){
         
         return compteur;
         }
+
+
 //Fonction strcpy personnalisée
 
 void mon_strcpy(char *source , char *destination){
@@ -58,6 +77,13 @@ void mon_strcpy(char *source , char *destination){
             destination[longueur_source]='\0';
             
              
+}
+
+char *mon_strdup(char *chaine){
+    int longueur_chaine= mon_strlen(chaine)+1;
+    char *ptr = malloc(sizeof(char)*longueur_chaine);
+    mon_strcpy(chaine,ptr);
+    return ptr;
 }
 
 
@@ -108,6 +134,9 @@ int main(){
     // Fonction strdup personnalisée
 
         printf("****** Fonction strdup personnalisée**********\n");
+        char *nouveau_pointeur = mon_strdup("bonjour");
+
+        printf("%s\n",nouveau_pointeur);
 
 
         
