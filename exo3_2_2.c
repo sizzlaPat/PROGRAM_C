@@ -19,20 +19,21 @@ Fonction strcpy personnalisée
 Écrivez une fonction mon_strcpy qui prend deux chaînes (source et destination) et 
 copie la source dans la destination. Assurez-vous que la destination a suffisamment d'espace!
 */
+/*
+Fonction strdup personnalisée
+Écrivez une fonction mon_strdup qui prend une chaîne en entrée et retourne un nouveau pointeur 
+vers une nouvelle chaîne qui est une copie de l'entrée. Utilisez malloc pour allouer la mémoire.
 
-//Fonction strcpy personnalisée
+*/
 
-void mon_strcpy(char *chaine1 , char *chaine2){
+char *mon_strdup(char *chaine){
+    int longueur_chaine= mon_strlen(chaine);
+    char *ptr = malloc(sizeof(char)*longueur_chaine);
+    mon_strcpy(chaine,ptr);
 
-   
-    if(mon_strlen(chaine1) <= mon_strlen(chaine2) ){
-     int tmp=*chaine1;
-    *chaine1=*chaine2;
-    *chaine2=tmp;
-    }
+
+    return ptr;
 }
-
-
 
 //     Fonction strlen personnalisée
 int mon_strlen(char *tab){
@@ -42,11 +43,42 @@ int mon_strlen(char *tab){
         
         return compteur;
         }
+//Fonction strcpy personnalisée
+
+void mon_strcpy(char *source , char *destination){
+
+        int longueur_source = mon_strlen(source);
+        
+            for (int i = 0; source[i] !='\0'; i++)
+            {
+                
+            destination[i] = source[i];
+           
+            }
+            destination[longueur_source]='\0';
+            
+             
+}
 
 
 int main(){
+//Decalage de bit exemple prof
+    char  *ptr = malloc(sizeof(char)*5);
+    char chaine[] = "Stan";
 
-   //Initialisation d'un pointeur
+    for (int i = 0; chaine[i] != '\0'; i++)
+    {
+        * (ptr +i) = chaine[i];
+    }
+   
+        ptr[0]='s';
+        printf("%c\n",ptr[0]);
+        printf("%c\n",*ptr);
+        
+    char *destination = malloc(sizeof(char)*7);
+
+
+   //Initialisation d'un pointeur()
     printf("****** Initialisation d'un pointeur**********\n");
     int *entier = malloc(sizeof(int));
     *entier=5;
@@ -66,26 +98,22 @@ int main(){
 
     char* salutation ="coucou";
     printf("La longeur de %s est de %d  ",salutation,mon_strlen(salutation));
+     printf("\n");
+    printf("****** Fonction strcpy personnalisée**********\n");
+        
+        mon_strcpy("petit",destination);
 
-    
+        printf("%s\n",destination);
 
+    // Fonction strdup personnalisée
 
-
-
-
-
-
-
-
-
+        printf("****** Fonction strdup personnalisée**********\n");
 
 
-
-
-
-
-free(entier);
-free(tab_entiers_5);
+        
+        free(destination);
+        free(entier);
+        free(tab_entiers_5);
     return 0;
 }
 
