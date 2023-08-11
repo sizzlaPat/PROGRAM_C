@@ -38,19 +38,7 @@ Recherche d'un caractère
 Écrivez une fonction qui prend une chaîne et un caractère en entrée, et renvoie un pointeur vers la première occurrence de ce caractère dans la chaîne (ou NULL si le caractère n'est pas trouvé).
 
 */
-void mon_strcat(char *source, char *destination){
 
-        int longueur_source = mon_strlen(source);
-        int longueur_destination = mon_strlen(destination);
-        for (int i = longueur_source ; destination[i] != '\0'; i++)
-        {
-           destination[i]= source[i-longueur_source];
-        }
-        
-       destination[longueur_destination+longueur_source]='\0';
-
-
-}
 
 //     Fonction strlen personnalisée
 int mon_strlen(char *tab){
@@ -84,6 +72,30 @@ char *mon_strdup(char *chaine){
     char *ptr = malloc(sizeof(char)*longueur_chaine);
     mon_strcpy(chaine,ptr);
     return ptr;
+}
+
+   void mon_strcat(char *source, char *destination){
+
+        int longueur_source = mon_strlen(source);
+        int longueur_destination = mon_strlen(destination);
+        for (int i = 0  ; source[i] != '\0'; i++)
+        {
+           destination[longueur_destination+i]= source[i ];
+        }
+        
+       destination[longueur_destination+longueur_source]='\0';
+
+
+}
+
+char *search_Char(char *chaine,char cible){
+     for (int i=0; chaine[i] !='\0' ; i++){
+        if(chaine[i] == cible){
+
+            return chaine + i;
+        }
+     }
+     return NULL;
 }
 
 
@@ -137,6 +149,8 @@ int main(){
         char *nouveau_pointeur = mon_strdup("bonjour");
 
         printf("%s\n",nouveau_pointeur);
+        char *result= search_Char(nouveau_pointeur,'n');
+        printf("%s\n",result);
 
 
         
