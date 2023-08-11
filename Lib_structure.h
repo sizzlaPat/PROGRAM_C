@@ -29,5 +29,12 @@ int jour;
 int mois;
 int Annee;
 }Date;
-    
+
+  
+typedef struct{
+char *titre;
+char *auteur;
+char *prix;
+}Livre;
+
 #endif
